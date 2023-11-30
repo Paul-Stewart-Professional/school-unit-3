@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         Task {
             do {
-                let people = try await StarwarsPeopleController.getAllPeople().results
+                let people = try await StarwarsPeopleController.searchForPeople(searchParam: "skywalker").results
                 for person in people {
                     print(person.name)
                 }

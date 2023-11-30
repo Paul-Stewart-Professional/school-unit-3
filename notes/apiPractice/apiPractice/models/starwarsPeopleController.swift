@@ -27,4 +27,31 @@ struct StarwarsPeopleController {
         let people = try decoder.decode(StarwarsPeopleResult.self, from: data)
         return people
     }
+    
+    
+    static func searchForPeople(searchParam: String) async throws -> StarwarsPeopleResult {
+        var url = URLComponents(string: "\(baseURL)/people")!
+        let session = URLSession.shared
+        
+        //THIS NEEDS TO COME BEFORE THE REQUEST OR IT DOESNT KNOW WTF TO DO
+        //THIS NEEDS TO COME BEFORE THE REQUEST OR IT DOESNT KNOW WTF TO DO
+        url.queryItems = [
+            URLQueryItem(name: "search", value: searchParam)
+        ]
+        //THIS NEEDS TO COME BEFORE THE REQUEST OR IT DOESNT KNOW WTF TO DO
+        //THIS NEEDS TO COME BEFORE THE REQUEST OR IT DOESNT KNOW WTF TO DO
+        
+        let request = URLRequest(url: url.url!)
+        
+        let (data, response) = try await session.data(for: request)
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw StarwarsError.non200ErrorCode
+        }
+        let decoder = JSONDecoder()
+        let people = try decoder.decode(StarwarsPeopleResult.self, from: data)
+    
+        
+        return people
+    }
 }
