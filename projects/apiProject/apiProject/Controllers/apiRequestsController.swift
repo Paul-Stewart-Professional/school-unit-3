@@ -12,9 +12,10 @@ enum NetworkError: Error, LocalizedError {
 }
 enum DogError: Error, LocalizedError {
     case dogNumberError
+    case imageData
 }
 
-struct apiRequestsController {
+struct APIRequestsController {
     static var baseURL = ""
     static let decoder = JSONDecoder()
     static let session = URLSession.shared
@@ -40,7 +41,8 @@ struct apiRequestsController {
         let rep = try decoder.decode(RepresentativeResults.self, from: data)
         return rep
     }
-    static func fetchDog(numberOfDogs: Int) async throws -> Dog {
+    
+    static func fetchDogs(numberOfDogs: Int) async throws -> Dog {
         guard numberOfDogs >= 1 else { throw DogError.dogNumberError }
         baseURL = "https://dog.ceo/api/breeds/image/random"
         baseURL.append("/\(numberOfDogs)")

@@ -16,36 +16,194 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Gfk-Qy-RHX">
+                                <rect key="frame" x="121.66666666666669" y="356.66666666666669" width="150" height="138.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udy-Cp-Gew">
+                                        <rect key="frame" x="35.999999999999986" y="0.0" width="78" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tq9-dW-CXu">
+                                        <rect key="frame" x="0.0" y="45.333333333333314" width="150" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="fBe-7h-SV7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="editingChanged:" destination="3sa-Fn-KDw" eventType="editingChanged" id="wAu-cm-a7c"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1t-uL-AIM">
+                                        <rect key="frame" x="15.666666666666679" y="104.33333333333331" width="118.33333333333331" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Find My Rep"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Gfk-Qy-RHX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="YNc-FM-q17"/>
+                            <constraint firstItem="Gfk-Qy-RHX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ypf-Hr-gPA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Rep" id="HJz-dA-7Dz">
                         <imageReference key="image" image="star.fill" catalog="system" symbolScale="medium"/>
                         <imageReference key="selectedImage" image="star.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <connections>
+                        <segue destination="H09-tw-hqg" kind="show" id="n72-p1-UzC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="3sa-Fn-KDw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="894" y="4"/>
+            <point key="canvasLocation" x="898" y="-6"/>
         </scene>
-        <!--Dog-->
+        <!--Rep Results Table View Controller-->
+        <scene sceneID="Y9P-6n-wzi">
+            <objects>
+                <tableViewController id="H09-tw-hqg" customClass="RepResultsTableViewController" customModule="apiProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KWL-ZM-1bz">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="HOs-Jo-L58" detailTextLabel="eJi-lp-a22" style="IBUITableViewCellStyleSubtitle" id="CSn-GS-gF8">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSn-GS-gF8" id="POv-PY-ms1">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HOs-Jo-L58">
+                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eJi-lp-a22">
+                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="32.666666666666664" height="14.333333333333334"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="H09-tw-hqg" id="oW4-3A-IFG"/>
+                            <outlet property="delegate" destination="H09-tw-hqg" id="2LO-BV-vTm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="GS4-tg-6k1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ovY-As-hrw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="664"/>
+        </scene>
+        <!--Dog View Controller-->
         <scene sceneID="2qr-SU-Dtm">
             <objects>
                 <viewController id="MY5-pq-DKR" customClass="DogViewController" customModule="apiProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cd4-hJ-kaN">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7qO-rl-skj">
+                                <rect key="frame" x="129.66666666666669" y="361.66666666666669" width="133.66666666666669" height="128.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Dogs?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-xH-WIY">
+                                        <rect key="frame" x="0.0" y="0.0" width="133.66666666666666" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max 50" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJ2-sW-Gbu">
+                                        <rect key="frame" x="29" y="40.333333333333314" width="76" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8v0-wF-FaJ">
+                                        <rect key="frame" x="19.666666666666679" y="94.333333333333314" width="94.333333333333314" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Generate"/>
+                                        <connections>
+                                            <action selector="generateButtonTapped:" destination="MY5-pq-DKR" eventType="touchUpInside" id="bRB-Kg-Rcz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FIL-2V-LXW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7qO-rl-skj" firstAttribute="centerY" secondItem="Cd4-hJ-kaN" secondAttribute="centerY" id="S2R-QH-brQ"/>
+                            <constraint firstItem="7qO-rl-skj" firstAttribute="centerX" secondItem="Cd4-hJ-kaN" secondAttribute="centerX" id="fFW-sC-fox"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Dog" id="FXs-lS-ses">
-                        <imageReference key="image" image="pawprint.fill" catalog="system" symbolScale="medium"/>
-                        <imageReference key="selectedImage" image="pawprint.fill" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="9Mh-lX-frG"/>
+                    <connections>
+                        <outlet property="generateButton" destination="8v0-wF-FaJ" id="qLH-Sl-WAs"/>
+                        <outlet property="numberOfDogsTextField" destination="NJ2-sW-Gbu" id="oJ3-cI-gsS"/>
+                        <segue destination="zyH-x6-Vha" kind="show" identifier="dogImageSegue" id="dre-G8-SYb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4N-Pl-sDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1676" y="4"/>
+            <point key="canvasLocation" x="1740" y="49"/>
+        </scene>
+        <!--Dog Results Table View Controller-->
+        <scene sceneID="Iu2-nd-55F">
+            <objects>
+                <tableViewController id="zyH-x6-Vha" customClass="DogResultsTableViewController" customModule="apiProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="FgM-GG-uwj">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DogImageCell" rowHeight="393" id="PbG-Gb-3JM" customClass="DogImageTableViewCell" customModule="apiProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="393"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PbG-Gb-3JM" id="14g-Ag-a2Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WBk-W8-iMp">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="393"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="WBk-W8-iMp" secondAttribute="bottom" id="ExB-06-gq5"/>
+                                        <constraint firstAttribute="trailing" secondItem="WBk-W8-iMp" secondAttribute="trailing" id="ifh-VE-beg"/>
+                                        <constraint firstItem="WBk-W8-iMp" firstAttribute="top" secondItem="14g-Ag-a2Q" secondAttribute="top" id="sbi-Lq-GJS"/>
+                                        <constraint firstItem="WBk-W8-iMp" firstAttribute="leading" secondItem="14g-Ag-a2Q" secondAttribute="leading" id="zcd-IB-IU4"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dogImageView" destination="WBk-W8-iMp" id="xS7-vk-wAl"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="zyH-x6-Vha" id="0ft-tb-uFy"/>
+                            <outlet property="delegate" destination="zyH-x6-Vha" id="xGv-de-iUa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="eWs-2C-b7U"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUi-HU-5iR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740" y="730"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lMR-mb-tsF">
@@ -53,17 +211,40 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="PhP-Ce-aZ7" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q28-Ff-Zqm">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fnW-6Z-bVO"/>
-                        <segue destination="MY5-pq-DKR" kind="relationship" relationship="viewControllers" id="Ufv-mg-5qJ"/>
+                        <segue destination="t7J-dj-EJx" kind="relationship" relationship="viewControllers" id="Ufv-mg-5qJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TYj-QN-AHZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="122.90076335877862" y="3.5211267605633805"/>
+        </scene>
+        <!--Dog-->
+        <scene sceneID="908-vL-php">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="t7J-dj-EJx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dog" id="FXs-lS-ses">
+                        <imageReference key="image" image="pawprint.fill" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="pawprint.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hz1-om-Mbt">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MY5-pq-DKR" kind="relationship" relationship="rootViewController" id="TNk-gi-v8C"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ao2-t3-SgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1740" y="-699"/>
         </scene>
     </scenes>
     <resources>
