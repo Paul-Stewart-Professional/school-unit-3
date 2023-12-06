@@ -13,15 +13,17 @@ class RepsTableViewCell: UITableViewCell {
     @IBOutlet weak var partyStateLabel: UILabel!
     @IBOutlet weak var repNameLabel: UILabel!
     
+    weak var delegate: RepsTableViewCellDelegate?
+    var rep: Representative?
+    var url: URL?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func websiteLinkButtonTapped(_ sender: Any) {
+        delegate?.grabURL(rep: rep!, url: url!)
     }
-
+    
 }
