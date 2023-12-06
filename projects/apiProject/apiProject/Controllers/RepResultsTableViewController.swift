@@ -8,7 +8,7 @@
 import UIKit
 
 class RepResultsTableViewController: UITableViewController {
-
+    var reps: [Representative] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,23 +23,25 @@ class RepResultsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return reps.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "repCell", for: indexPath) as! RepsTableViewCell
 
-        // Configure the cell...
-
+        let currentRep = reps[indexPath.row]
+        cell.websiteLinkButton.titleLabel!.text = String(currentRep.link)
+        cell.partyStateLabel.text = "\(currentRep.party), \(currentRep.state)"
+        cell.repNameLabel.text = currentRep.name
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

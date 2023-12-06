@@ -12,8 +12,8 @@ struct Representative: Codable {
     var party: String
     var state: String
     var link: String
+    
 }
-
 
 struct RepresentativeResults: Codable {
     var results: [Representative]

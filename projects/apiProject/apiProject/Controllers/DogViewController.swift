@@ -17,9 +17,6 @@ class DogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if numberOfDogsTextField.text?.isEmpty == true {
-            generateButton.isEnabled = false
-        }
     }
     
     

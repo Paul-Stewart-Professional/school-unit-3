@@ -30,7 +30,7 @@ struct APIRequestsController {
         return data
     }
     
-    static func fetchRep(zip: String) async throws -> RepresentativeResults {
+    static func fetchRep(zip: String) async throws -> [Representative] {
         baseURL = "https://whoismyrepresentative.com/getall_mems.php"
         var url = URLComponents(string: baseURL)!
         url.queryItems = [
@@ -38,8 +38,9 @@ struct APIRequestsController {
             URLQueryItem(name: "output", value: "json")
         ]
         let data = try await fetchRequest(url: url)
-        let rep = try decoder.decode(RepresentativeResults.self, from: data)
-        return rep
+        let results = try decoder.decode(RepresentativeResults.self, from: data)
+        print(results)
+        return results.results
     }
     
     static func fetchDogs(numberOfDogs: Int) async throws -> Dog {

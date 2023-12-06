@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Rep-->
+        <!--Rep View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="RepViewController" customModule="apiProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,6 +41,9 @@
                                         <rect key="frame" x="15.666666666666679" y="104.33333333333331" width="118.33333333333331" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Find My Rep"/>
+                                        <connections>
+                                            <action selector="findMyRepButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JEj-vy-gO3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -52,51 +55,61 @@
                             <constraint firstItem="Gfk-Qy-RHX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ypf-Hr-gPA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rep" id="HJz-dA-7Dz">
-                        <imageReference key="image" image="star.fill" catalog="system" symbolScale="medium"/>
-                        <imageReference key="selectedImage" image="star.fill" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="jdC-b4-eSH"/>
                     <connections>
-                        <segue destination="H09-tw-hqg" kind="show" id="n72-p1-UzC"/>
+                        <outlet property="findMyRepButton" destination="h1t-uL-AIM" id="5wK-72-miQ"/>
+                        <outlet property="zipCodeTextField" destination="Tq9-dW-CXu" id="hDM-QQ-mZG"/>
+                        <segue destination="H09-tw-hqg" kind="show" identifier="repSegue" id="n72-p1-UzC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <exit id="3sa-Fn-KDw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="898" y="-6"/>
+            <point key="canvasLocation" x="879" y="4"/>
         </scene>
         <!--Rep Results Table View Controller-->
         <scene sceneID="Y9P-6n-wzi">
             <objects>
                 <tableViewController id="H09-tw-hqg" customClass="RepResultsTableViewController" customModule="apiProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="KWL-ZM-1bz">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="HOs-Jo-L58" detailTextLabel="eJi-lp-a22" style="IBUITableViewCellStyleSubtitle" id="CSn-GS-gF8">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="repCell" id="CSn-GS-gF8" customClass="RepsTableViewCell" customModule="apiProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSn-GS-gF8" id="POv-PY-ms1">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CSn-GS-gF8" id="POv-PY-ms1" customClass="RepsTableViewCell" customModule="apiProject" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HOs-Jo-L58">
-                                            <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1q-Fx-gUp">
+                                            <rect key="frame" x="20" y="4" width="45" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eJi-lp-a22">
-                                            <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="32.666666666666664" height="14.333333333333334"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Party, STATE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Inb-e5-pQl">
+                                            <rect key="frame" x="20" y="26" width="82" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zr-Wa-dgz">
+                                            <rect key="frame" x="142" y="4" width="56" height="35"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Link"/>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="partyStateLabel" destination="Inb-e5-pQl" id="5pd-xT-yp4"/>
+                                    <outlet property="repNameLabel" destination="D1q-Fx-gUp" id="GVw-yZ-Jd5"/>
+                                    <outlet property="websiteLinkButton" destination="0zr-Wa-dgz" id="SYD-BQ-zUQ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -159,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D4N-Pl-sDq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="49"/>
+            <point key="canvasLocation" x="1740" y="4"/>
         </scene>
         <!--Dog Results Table View Controller-->
         <scene sceneID="Iu2-nd-55F">
@@ -203,7 +216,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUi-HU-5iR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1740" y="730"/>
+            <point key="canvasLocation" x="1740" y="663"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lMR-mb-tsF">
@@ -216,7 +229,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="fnW-6Z-bVO"/>
+                        <segue destination="qCd-ie-Y7I" kind="relationship" relationship="viewControllers" id="fnW-6Z-bVO"/>
                         <segue destination="t7J-dj-EJx" kind="relationship" relationship="viewControllers" id="Ufv-mg-5qJ"/>
                     </connections>
                 </tabBarController>
@@ -245,6 +258,28 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ao2-t3-SgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1740" y="-699"/>
+        </scene>
+        <!--Rep-->
+        <scene sceneID="lIN-YR-wOA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qCd-ie-Y7I" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rep" id="HJz-dA-7Dz">
+                        <imageReference key="image" image="star.fill" catalog="system" symbolScale="medium"/>
+                        <imageReference key="selectedImage" image="star.fill" catalog="system" symbolScale="large"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IB9-v8-BPm">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="mhp-xt-kmg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pyV-Qf-3Z7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="879" y="-699"/>
         </scene>
     </scenes>
     <resources>
