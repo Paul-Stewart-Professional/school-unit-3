@@ -12,7 +12,7 @@ class ItemManager {
     static let shared = ItemManager()
     
     var allItems = [Item]()
-
+    
     
     // Create
     
@@ -27,8 +27,11 @@ class ItemManager {
     
     // Retrieve
     
-    private func fetchItems(matching predicate: NSPredicate) -> [Item] {
+    private func fetchItems(matching predicate: NSPredicate, sortDescriptorKey: String) -> [Item] {
         let fetchRequest = Item.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: sortDescriptorKey, ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.predicate = predicate
         do {
             let context = PersistenceController.shared.viewContext
@@ -39,20 +42,21 @@ class ItemManager {
         }
     }
     
+    
     func fetchIncompleteItems() -> [Item] {
-      return fetchItems(matching: NSPredicate(format: "completedAt == nil"))
-  }
+        return fetchItems(matching: NSPredicate(format: "completedAt == nil"), sortDescriptorKey: "createdAt")
+    }
     
     func fetchCompleteItems() -> [Item] {
-      return fetchItems(matching: NSPredicate(format: "completedAt != nil"))
-  }
-
-
-//    
-//    func incompleteItems() -> [Item] {
-//        let incomplete = allItems.filter { $0.completedAt == nil }
-//        return incomplete.sorted(by: { $0.sortDate >  $1.sortDate })
-//    }
+        return fetchItems(matching: NSPredicate(format: "completedAt != nil"), sortDescriptorKey: "completedAt")
+    }
+    
+    
+    //
+    //    func incompleteItems() -> [Item] {
+    //        let incomplete = allItems.filter { $0.completedAt == nil }
+    //        return incomplete.sorted(by: { $0.sortDate >  $1.sortDate })
+    //    }
     
     func completedItems() -> [Item] {
         let completed = allItems.filter { $0.completedAt != nil }
@@ -62,28 +66,24 @@ class ItemManager {
     // Update
     
     func toggleItemCompletion(_ item: Item) {
-        var updatedItem = item
-        updatedItem.completedAt = item.isCompleted ? nil : Date()
-        if let index = allItems.firstIndex(of: item) {
-            allItems.remove(at: index)
+            item.completedAt = item.isCompleted ? nil : Date()
+            PersistenceController.shared.saveContext()
         }
-        allItems.append(updatedItem)
+        
+        
+        // Delete
+        
+        func delete(at indexPath: IndexPath) {
+            remove(item(at: indexPath))
+        }
+        
+        func remove(_ item: Item) {
+            //        guard let index = allItems.firstIndex(of: item) else { return }
+            //        allItems.remove(at: index)
+        }
+        
+        func item(at indexPath: IndexPath) -> Item {
+            let items = indexPath.section == 0 ? fetchIncompleteItems() : fetchCompleteItems()
+            return items[indexPath.row]
+        }
     }
-    
-    // Delete
-    
-    func delete(at indexPath: IndexPath) {
-        remove(item(at: indexPath))
-    }
-    
-    func remove(_ item: Item) {
-//        guard let index = allItems.firstIndex(of: item) else { return }
-//        allItems.remove(at: index)
-    }
-
-    private func item(at indexPath: IndexPath) -> Item {
-        let items = indexPath.section == 0 ? fetchIncompleteItems() : fetchCompleteItems()
-        return items[indexPath.row]
-    }
-
-}
