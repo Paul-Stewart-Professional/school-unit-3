@@ -102,8 +102,10 @@ extension ItemsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        itemManager.delete(at: indexPath)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
+        let itemToRemove = item(at: indexPath)
+        itemManager.remove(itemToRemove)
+//        tableView.deleteRows(at: [indexPath], with: .automatic)
+        refreshData()
     }
     
 }
@@ -118,7 +120,6 @@ extension ItemsViewController: UITableViewDelegate {
         itemManager.toggleItemCompletion(item)
         refreshData()
     }
-    
 }
 
 

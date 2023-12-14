@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		020593E32B276C6F009E483B /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020593E22B276C6F009E483B /* PersistenceController.swift */; };
+		020594082B2B5453009E483B /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020594072B2B5453009E483B /* ToDoList.swift */; };
 		2E176FDE2903B30B001B5AE6 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E176FDD2903B30B001B5AE6 /* ItemTableViewCell.swift */; };
 		2E176FE02903B9E4001B5AE6 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E176FDF2903B9E4001B5AE6 /* ItemManager.swift */; };
 		2E176FE22903BA15001B5AE6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E176FE12903BA15001B5AE6 /* Item.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		020593E22B276C6F009E483B /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		020594072B2B5453009E483B /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
 		2E176FDD2903B30B001B5AE6 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		2E176FDF2903B9E4001B5AE6 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
 		2E176FE12903BA15001B5AE6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				2E26E12B28FB6BDF00717208 /* SceneDelegate.swift */,
 				2E26E12D28FB6BDF00717208 /* ItemsViewController.swift */,
 				2E176FDF2903B9E4001B5AE6 /* ItemManager.swift */,
+				020594072B2B5453009E483B /* ToDoList.swift */,
 				2E176FE12903BA15001B5AE6 /* Item.swift */,
 				2E176FDD2903B30B001B5AE6 /* ItemTableViewCell.swift */,
 				2E26E12F28FB6BDF00717208 /* Main.storyboard */,
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E26E12E28FB6BDF00717208 /* ItemsViewController.swift in Sources */,
+				020594082B2B5453009E483B /* ToDoList.swift in Sources */,
 				2E26E12A28FB6BDF00717208 /* AppDelegate.swift in Sources */,
 				2E176FDE2903B30B001B5AE6 /* ItemTableViewCell.swift in Sources */,
 				2E26E13428FB6BDF00717208 /* ToDoist.xcdatamodeld in Sources */,

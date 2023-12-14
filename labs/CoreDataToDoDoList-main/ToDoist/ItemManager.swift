@@ -66,24 +66,24 @@ class ItemManager {
     // Update
     
     func toggleItemCompletion(_ item: Item) {
-            item.completedAt = item.isCompleted ? nil : Date()
-            PersistenceController.shared.saveContext()
-        }
-        
-        
-        // Delete
-        
-        func delete(at indexPath: IndexPath) {
-            remove(item(at: indexPath))
-        }
-        
-        func remove(_ item: Item) {
-            //        guard let index = allItems.firstIndex(of: item) else { return }
-            //        allItems.remove(at: index)
-        }
-        
-        func item(at indexPath: IndexPath) -> Item {
-            let items = indexPath.section == 0 ? fetchIncompleteItems() : fetchCompleteItems()
-            return items[indexPath.row]
-        }
+        item.completedAt = item.isCompleted ? nil : Date()
+        PersistenceController.shared.saveContext()
     }
+    
+    
+//    
+//    func delete(at indexPath: IndexPath) {
+//        remove(item(at: indexPath))
+//    }
+//    
+    func remove(_ item: Item) {
+        let context = PersistenceController.shared.viewContext
+        context.delete(item)
+        PersistenceController.shared.saveContext()
+    }
+    
+    func item(at indexPath: IndexPath) -> Item {
+        let items = indexPath.section == 0 ? fetchIncompleteItems() : fetchCompleteItems()
+        return items[indexPath.row]
+    }
+}
