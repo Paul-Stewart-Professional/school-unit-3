@@ -8,6 +8,10 @@
 import UIKit
 
 class ListOfListsTableViewController: UITableViewController {
+    
+    var list: ToDoList?
+    
+    private let manager = ItemManager.shared
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,6 +20,10 @@ class ListOfListsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     func showTextFieldAlert() {
@@ -31,18 +39,27 @@ class ListOfListsTableViewController: UITableViewController {
             alertController.addAction(cancelAction)
 
             // Add an OK action with a handler
-            let okAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] (_) in
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [self, weak alertController] (_) in
                 // Access the text field and do something with the entered text
                 if let textField = alertController?.textFields?.first {
+                    let enteredText = textField.text ?? ""
+                    
                     print("Entered text: \(textField.text ?? "")")
                     // Perform any action with the entered text
+                    manager.createNewToDoList(with: enteredText)
+                    //make sure data is being saved by reading it
+                    tableView.reloadData()
                 }
             }
-            alertController.addAction(okAction)
+            alertController.addAction(saveAction)
 
             // Present the alert controller
             present(alertController, animated: true, completion: nil)
         }
+    
+    func list(at indexPath: IndexPath) -> ToDoList {
+        manager.allLists()[indexPath.row]
+    }
     
     
     @IBAction func addToDoButtonTapped(_ sender: Any) {
@@ -53,67 +70,43 @@ class ListOfListsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return manager.allLists().count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath)
+        let thisParticularToDoList = list(at: indexPath)
+        cell.textLabel?.text = thisParticularToDoList.title
+        cell.detailTextLabel?.text = "\(thisParticularToDoList.itemsArray.count) items"
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        guard editingStyle == .delete else { return }
+        let thisParticularToDoList = list(at: indexPath)
+        manager.remove(thisParticularToDoList.itemsArray[indexPath.row])
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBSegueAction func showItems(_ coder: NSCoder) -> ItemsViewController? {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return nil }
+        tableView.deselectRow(at: indexPath, animated: true)
+        let selectedList = list(at: indexPath)
+        return ItemsViewController(code: coder, list: selectedList)
     }
-    */
-
 }
+
+    

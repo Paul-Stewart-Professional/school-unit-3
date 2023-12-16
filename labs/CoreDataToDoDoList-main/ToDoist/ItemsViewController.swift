@@ -21,12 +21,24 @@ class ItemsViewController: UIViewController {
     
     // MARK: - Properties
     
+    let list: ToDoList
+    
     private let itemManager = ItemManager.shared
     var incompleteItems: [Item] = []
     var completeItems: [Item] = []
 
     
     // MARK: - Lifecycle
+
+    
+    init?(code aDecoder: NSCoder, list: ToDoList) {
+        self.list = list
+        super.init(coder: aDecoder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +46,8 @@ class ItemsViewController: UIViewController {
     }
 
 }
+
+// MARK: - Initialization
 
 
 // MARK: - Private
@@ -49,6 +63,7 @@ private extension ItemsViewController {
             return completeItems[indexPath.row]
         }
     }
+    
     func refreshData() {
         self.incompleteItems = itemManager.fetchIncompleteItems()
         self.completeItems = itemManager.fetchCompleteItems()
@@ -129,7 +144,7 @@ extension ItemsViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let text = textField.text, !text.isEmpty else { return true }
-        itemManager.createNewItem(with: text)
+        itemManager.createNewItem(with: text, toDoList: list)
         textField.text = ""
         refreshData()
         return true

@@ -67,7 +67,6 @@ extension Item {
 // MARK: - Date Formatter
 
 extension Item {
-    
     static var relativeDateFormatter: RelativeDateTimeFormatter = {
         let formatter = RelativeDateTimeFormatter()
         formatter.dateTimeStyle = .named
