@@ -65,8 +65,8 @@ private extension ItemsViewController {
     }
     
     func refreshData() {
-        self.incompleteItems = itemManager.fetchIncompleteItems()
-        self.completeItems = itemManager.fetchCompleteItems()
+        self.incompleteItems = list.itemsArray.filter { !$0.isCompleted }.sorted(by: { $0.createdAtDate > $1.createdAtDate})
+        self.completeItems = list.itemsArray.filter { $0.isCompleted }.sorted(by: { $0.completedAtDate > $1.completedAtDate })
         tableView.reloadData()
     }
     

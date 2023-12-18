@@ -1,23 +1,23 @@
 
 import UIKit
 
-extension Data {
-    func prettyPrintedJSONString() {
-        guard
-            let jsonObject = try?
-               JSONSerialization.jsonObject(with: self,
-               options: []),
-            let jsonData = try?
-               JSONSerialization.data(withJSONObject:
-               jsonObject, options: [.prettyPrinted]),
-            let prettyJSONString = String(data: jsonData,
-               encoding: .utf8) else {
-                print("Failed to read JSON Object.")
-                return
-        }
-        print(prettyJSONString)
-    }
-}
+//extension Data {
+//    func prettyPrintedJSONString() {
+//        guard
+//            let jsonObject = try?
+//               JSONSerialization.jsonObject(with: self,
+//               options: []),
+//            let jsonData = try?
+//               JSONSerialization.data(withJSONObject:
+//               jsonObject, options: [.prettyPrinted]),
+//            let prettyJSONString = String(data: jsonData,
+//               encoding: .utf8) else {
+//                print("Failed to read JSON Object.")
+//                return
+//        }
+//        print(prettyJSONString)
+//    }
+//}
 
 
 var queryDictionary: [String: String] = ["term": "j+cole", "media": "music", "limit": "5"]
@@ -28,10 +28,10 @@ Task {
   let (data, response) = try await URLSession.shared.data(from: urlComponents.url!)
   if let httpResponse = response as? HTTPURLResponse,
      //This straight up might not work
-     let prettyPrintedData = data.prettyPrintedJSONString(),
+//     let prettyPrintedData = data.prettyPrintedJSONString(),
     httpResponse.statusCode == 200,
      //if it doesnt work remove line 31 and replaced prettyPrintedData with data
-     let string = String(data: prettyPrintedData, encoding: .utf8) {
+     let string = String(data: data, encoding: .utf8) {
     print(string)
   }
 }

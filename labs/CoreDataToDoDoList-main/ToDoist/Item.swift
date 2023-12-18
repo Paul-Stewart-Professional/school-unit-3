@@ -13,6 +13,10 @@ extension Item {
     var createdAtDate: Date {
         createdAt ?? Date.distantPast
     }
+    var completedAtDate: Date {
+        completedAt ?? Date.distantPast
+    }
+
     var isCompleted: Bool {
         completedAt != nil
     }
