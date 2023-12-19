@@ -20,35 +20,35 @@ extension Data {
 }
 
 struct StoreItem: Codable {
-    var type: String
+    var kind: String
     var artWorkUrl: String
     var artistName: String
     var trackName: String
-    var primaryGenre: String
+    var primaryGenreName: String
     var description: String?
     
     
-    enum CodingKeys: CodingKeys {
-        case type
-        case artworkUrl = "artworkUrl100"
+    enum CodingKeys: String, CodingKey {
+        case kind
+        case artWorkUrl = "artworkUrl100"
         case artistName
         case trackName
         case primaryGenreName
-        case desctiption
+        case description
     }
-    enum AdditionalCodingKeys: CodingKeys {
+    enum AdditionalCodingKeys: CodingKey {
         case longDescription
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        type = try values.decode(String.self, forKey: CodingKeys.type)
-        artworkUrl = try values.decode(String.self, forKey: CodingKeys.artworkUrl)
+        kind = try values.decode(String.self, forKey: CodingKeys.kind)
+        artWorkUrl = try values.decode(String.self, forKey: CodingKeys.artWorkUrl)
         artistName = try values.decode(String.self, forKey: CodingKeys.artistName)
         trackName = try values.decode(String.self, forKey: CodingKeys.trackName)
-        genre = try values.decode(String.self, forKey: CodingKeys.primaryGenreName)
+        primaryGenreName = try values.decode(String.self, forKey: CodingKeys.primaryGenreName)
         
-        if let description = try? values.decode(String.self, forKey: CodingKeys.desctiption) {
+        if let description = try? values.decode(String.self, forKey: CodingKeys.description) {
             self.description = description
         } else {
             let additionalValues = try decoder.container(keyedBy: AdditionalCodingKeys.self)
@@ -68,20 +68,33 @@ enum error: Error, LocalizedError {
 
 func fetchItems(matching query: [String: String]) async throws -> [StoreItem] {
     var urlComponents = URLComponents(string: "https://itunes.apple.com/search")!
-
+    urlComponents.queryItems = query.map( { URLQueryItem(name: $0.key, value: $0.value ) } )
+    let (data, response) = try await
+    URLSession.shared.data(from: urlComponents.url!)
+    guard let httpResponse = response as? HTTPURLResponse,
+          httpResponse.statusCode == 200 else { throw error.non200StatusCode}
+    let jsonDecoder = JSONDecoder()
+    let searchRequest = try jsonDecoder.decode(SearchResponse.self, from: data)
+    return searchRequest.results
 }
 
 
-var queryDictionary: [String: String] = ["term": "apple", "media": "music", "limit": "5"]
-//var baseURL = URL(from: "https://itunes.apple.com/search")
-urlComponents.queryItems = queryDictionary.map( { URLQueryItem(name: $0.key, value: $0.value ) } )
+var queryItems: [String: String] = ["term": "kendrick+lamar", "media": "music", "limit": "5"]
+
 Task {
-    let (data, response) = try await
-    URLSession.shared.data(from: urlComponents.url!)
-    if let httpResponse = response as? HTTPURLResponse,
-       //This straight up might not work
-       //     let prettyPrintedData = data.prettyPrintedJSONString(),
-        httpResponse.statusCode == 200 {
-        data.prettyPrintedJSONString()
+    do {
+        let storeItems = try await fetchItems(matching: queryItems)
+        storeItems.forEach { item in
+            print("""
+            Name: \(item.trackName)
+            Artist(s): \(item.artistName)
+            Kind: \(item.kind)
+            Genre: \(item.primaryGenreName)
+            Description: \(item.description ?? "")
+            Artwork URL: \(item.artWorkUrl)
+            """)
+        }
+    } catch {
+        print(error)
     }
 }
