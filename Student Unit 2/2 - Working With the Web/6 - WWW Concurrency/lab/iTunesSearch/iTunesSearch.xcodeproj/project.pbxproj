@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		029EAA962B3233E000803746 /* StoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029EAA952B3233E000803746 /* StoreItem.swift */; };
+		029EAA982B32358800803746 /* StoreItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029EAA972B32358800803746 /* StoreItemController.swift */; };
 		18A6051D23CF9802002037CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6051C23CF9802002037CA /* AppDelegate.swift */; };
 		18A6051F23CF9802002037CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6051E23CF9802002037CA /* SceneDelegate.swift */; };
 		18A6052423CF9802002037CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A6052223CF9802002037CA /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		029EAA952B3233E000803746 /* StoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItem.swift; sourceTree = "<group>"; };
+		029EAA972B32358800803746 /* StoreItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemController.swift; sourceTree = "<group>"; };
 		18A6051923CF9802002037CA /* iTunesSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A6051C23CF9802002037CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18A6051E23CF9802002037CA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 				18A6053223CF9ADA002037CA /* ItemCell.swift */,
 				18A6051E23CF9802002037CA /* SceneDelegate.swift */,
 				18A6053023CF9829002037CA /* StoreItemListTableViewController.swift */,
+				029EAA952B3233E000803746 /* StoreItem.swift */,
+				029EAA972B32358800803746 /* StoreItemController.swift */,
 				18A6052523CF9803002037CA /* Assets.xcassets */,
 				18A6052723CF9803002037CA /* LaunchScreen.storyboard */,
 				18A6052223CF9802002037CA /* Main.storyboard */,
@@ -141,6 +147,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A6053323CF9ADA002037CA /* ItemCell.swift in Sources */,
+				029EAA962B3233E000803746 /* StoreItem.swift in Sources */,
+				029EAA982B32358800803746 /* StoreItemController.swift in Sources */,
 				18A6053123CF9829002037CA /* StoreItemListTableViewController.swift in Sources */,
 				18A6051D23CF9802002037CA /* AppDelegate.swift in Sources */,
 				18A6051F23CF9802002037CA /* SceneDelegate.swift in Sources */,
