@@ -12,7 +12,7 @@ struct StoreItem: Codable {
     var artWorkUrl: String
     var artistName: String
     var trackName: String
-    var primaryGenreName: String
+    var primaryGenreName: String?
     var description: String?
     
     
@@ -26,6 +26,7 @@ struct StoreItem: Codable {
     }
     enum AdditionalCodingKeys: CodingKey {
         case longDescription
+        case genres
     }
     
     init(from decoder: Decoder) throws {
@@ -34,7 +35,14 @@ struct StoreItem: Codable {
         artWorkUrl = try values.decode(String.self, forKey: CodingKeys.artWorkUrl)
         artistName = try values.decode(String.self, forKey: CodingKeys.artistName)
         trackName = try values.decode(String.self, forKey: CodingKeys.trackName)
-        primaryGenreName = try values.decode(String.self, forKey: CodingKeys.primaryGenreName)
+        
+        if let primaryGenreName = try? values.decode(String.self, forKey: CodingKeys.primaryGenreName) {
+            self.primaryGenreName = primaryGenreName
+        } else {
+            let additionalValues = try decoder.container(keyedBy: AdditionalCodingKeys.self)
+            primaryGenreName = (try? additionalValues.decode(String.self, forKey: AdditionalCodingKeys.genres)) ?? ""
+        }
+        
         
         if let description = try? values.decode(String.self, forKey: CodingKeys.description) {
             self.description = description

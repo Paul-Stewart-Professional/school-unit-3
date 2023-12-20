@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "128392BD-0627-449E-8093-D969B22186BF"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB4BA05A-1FB6-49FB-8A0B-9A2BD1DCD260"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesSearch/StoreItemListTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "fetchMatchingItems()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FB4BA05A-1FB6-49FB-8A0B-9A2BD1DCD260 - b82d49190dd2d7dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTunesSearch.StoreItemListTableViewController.fetchMatchingItems() -&gt; ()"
+                  moduleName = "iTunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulstewart/School/school-unit-3/Student%20Unit%202/2%20-%20Working%20With%20the%20Web/6%20-%20WWW%20Concurrency/lab/iTunesSearch/iTunesSearch/StoreItemListTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "1228">
+               </Location>
+               <Location
+                  uuid = "FB4BA05A-1FB6-49FB-8A0B-9A2BD1DCD260 - b82d49190dd2d7dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iTunesSearch.StoreItemListTableViewController.fetchMatchingItems() -&gt; ()"
+                  moduleName = "iTunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulstewart/School/school-unit-3/Student%20Unit%202/2%20-%20Working%20With%20the%20Web/6%20-%20WWW%20Concurrency/lab/iTunesSearch/iTunesSearch/StoreItemListTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "1156">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B7094F6-4C4A-4A0E-9B3C-EC50FC02F72C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesSearch/StoreItemListTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "fetchMatchingItems()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0B7094F6-4C4A-4A0E-9B3C-EC50FC02F72C - 3eb51182bd9d4452"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for function signature specialization &lt;Arg[2] = Value Promoted from Box&gt; of closure #1 @Sendable () async -&gt; () in iTunesSearch.StoreItemListTableViewController.fetchMatchingItems() -&gt; ()"
+                  moduleName = "iTunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulstewart/School/school-unit-3/Student%20Unit%202/2%20-%20Working%20With%20the%20Web/6%20-%20WWW%20Concurrency/lab/iTunesSearch/iTunesSearch/StoreItemListTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "0B7094F6-4C4A-4A0E-9B3C-EC50FC02F72C - 15077c914e89e65d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for function signature specialization &lt;Arg[2] = Value Promoted from Box&gt; of closure #1 @Sendable () async -&gt; () in iTunesSearch.StoreItemListTableViewController.fetchMatchingItems() -&gt; ()"
+                  moduleName = "iTunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulstewart/School/school-unit-3/Student%20Unit%202/2%20-%20Working%20With%20the%20Web/6%20-%20WWW%20Concurrency/lab/iTunesSearch/iTunesSearch/StoreItemListTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "464">
+               </Location>
+               <Location
+                  uuid = "0B7094F6-4C4A-4A0E-9B3C-EC50FC02F72C - 3eb51182bd9d4473"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for function signature specialization &lt;Arg[2] = Value Promoted from Box&gt; of closure #1 @Sendable () async -&gt; () in iTunesSearch.StoreItemListTableViewController.fetchMatchingItems() -&gt; ()"
+                  moduleName = "iTunesSearch"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paulstewart/School/school-unit-3/Student%20Unit%202/2%20-%20Working%20With%20the%20Web/6%20-%20WWW%20Concurrency/lab/iTunesSearch/iTunesSearch/StoreItemListTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "220">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
