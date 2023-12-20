@@ -70,8 +70,9 @@ class StoreItemListTableViewController: UITableViewController {
             
             let item = items[indexPath.row]
             
-            let url = URL(string: item.artWorkUrl)
+            let url = URL(string: item.artWorkUrl)!
             
+            let image: UIImage = fetchImage(with: url)
             cell.itemImageView.image
             // set cell.titleLabel to the item's name
             cell.titleLabel.text = item.trackName
