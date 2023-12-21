@@ -47,7 +47,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray3Color"/>
                         <constraints>
                             <constraint firstItem="qSN-Fn-OzO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="46" id="S5I-SE-9ck"/>
                             <constraint firstItem="qSN-Fn-OzO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="281" id="ig4-yt-XNq"/>
@@ -56,7 +56,7 @@
                     <connections>
                         <outlet property="submitButton" destination="YcU-oU-GIL" id="zaT-UC-Ns5"/>
                         <outlet property="textField" destination="XHH-3Y-WIl" id="KnK-SQ-S9Z"/>
-                        <segue destination="R3W-II-kY8" kind="show" id="nF5-ao-BxZ"/>
+                        <segue destination="R3W-II-kY8" kind="show" identifier="sucessfulSegue" id="nF5-ao-BxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -98,6 +98,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
